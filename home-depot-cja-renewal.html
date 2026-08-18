@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Depot · AA + CJA Renewal | Adobe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;900&display=swap">
+<style>
+  /* === RESET === */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  img, svg { display: block; max-width: 100%; }
+
+  /* === TOKENS === */
+  :root {
+    --gray-50:#FFFFFF; --gray-75:#FAFAFA; --gray-100:#F5F5F5; --gray-200:#EAEAEA;
+    --gray-300:#E1E1E1; --gray-400:#CACACA; --gray-500:#B3B3B3; --gray-600:#8E8E8E;
+    --gray-700:#6E6E6E; --gray-800:#4B4B4B; --gray-900:#2C2C2C;
+
+    --color-background: var(--gray-50);
+    --color-background-layer-1: var(--gray-75);
+    --color-background-layer-2: var(--gray-100);
+    --color-text-primary: var(--gray-900);
+    --color-text-secondary: var(--gray-700);
+    --color-text-tertiary: var(--gray-600);
+    --color-border: var(--gray-300);
+    --color-border-subtle: var(--gray-200);
+    --color-surface: var(--gray-50);
+
+    --color-accent:#EB1000; --color-accent-hover:#D10000;
+    --color-accent-text:#FFFFFF; --color-accent-soft:#FFF0EE;
+    --color-hd:#F96302; --color-hd-soft:#FFF3EB;
+
+    --color-info:#378EF0; --color-success:#2D9D78; --color-warning:#E68619; --color-danger:#D7373F;
+
+    --space-50:4px; --space-75:8px; --space-100:12px; --space-200:16px; --space-300:24px;
+    --space-400:32px; --space-500:40px; --space-600:48px; --space-700:64px; --space-800:80px;
+    --space-900:96px; --space-1000:120px;
+
+    --radius-sm:4px; --radius-md:8px; --radius-lg:12px; --radius-xl:16px; --radius-round:9999px;
+
+    --font-family:'Source Sans 3','Adobe Clean','Segoe UI',system-ui,-apple-system,sans-serif;
+
+    --text-xs:11px; --text-sm:12px; --text-md:14px; --text-base:16px; --text-lg:18px;
+    --text-xl:20px; --text-2xl:24px; --text-3xl:28px; --text-4xl:34px; --text-5xl:40px; --text-6xl:52px;
+
+    --weight-light:300; --weight-regular:400; --weight-medium:500; --weight-semibold:600;
+    --weight-bold:700; --weight-black:900;
+
+    --leading-tight:1.15; --leading-normal:1.5; --leading-relaxed:1.7;
+
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+    --shadow-md:0 4px 12px rgba(0,0,0,.08);
+    --shadow-lg:0 8px 24px rgba(0,0,0,.12);
+    --shadow-xl:0 16px 48px rgba(0,0,0,.16);
+
+    --maxw:1160px;
+  }
+
+  /* === BASE === */
+  body {
+    font-family: var(--font-family);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-text-primary);
+    background: var(--color-background);
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--space-400); }
+  section { padding: var(--space-900) 0; }
+  h1,h2,h3 { line-height: var(--leading-tight); letter-spacing: -0.01em; }
+  .overline {
+    text-transform: uppercase; letter-spacing: 0.09em; font-size: var(--text-sm);
+    font-weight: var(--weight-bold); color: var(--color-accent);
+  }
+  .section-head { max-width: 760px; margin-bottom: var(--space-500); }
+  .section-head h2 { font-size: var(--text-4xl); font-weight: var(--weight-black); margin: var(--space-100) 0 var(--space-200); }
+  .section-head p { font-size: var(--text-lg); color: var(--color-text-secondary); max-width: 65ch; }
+  .accent { color: var(--color-accent); }
+
+  /* === NAV === */
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+  nav.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: var(--space-200); font-weight: var(--weight-bold); }
+  .brand .adobe { color: var(--color-accent); font-size: var(--text-xl); font-weight: var(--weight-black); letter-spacing: -0.02em; }
+  .brand .sep { color: var(--color-border); }
+  .brand .ctx { color: var(--color-text-tertiary); font-size: var(--text-md); font-weight: var(--weight-semibold); }
+  nav.top ul { list-style: none; display: flex; gap: var(--space-300); align-items: center; }
+  nav.top a { color: var(--color-text-secondary); text-decoration: none; font-size: var(--text-md); font-weight: var(--weight-medium); padding: 6px 2px; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+  nav.top a:hover { color: var(--color-text-primary); }
+  nav.top a.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 22px; color: var(--color-text-primary); }
+
+  /* === HERO === */
+  .hero { background: var(--gray-900); color: #fff; position: relative; overflow: hidden; padding: var(--space-1000) 0; }
+  .hero::before { content:""; position:absolute; left:0; top:0; bottom:0; width:6px; background: var(--color-accent); }
+  .hero .wrap { position: relative; z-index: 2; }
+  .hero .overline { color: var(--color-hd); }
+  .hero h1 { font-size: clamp(var(--text-4xl), 6vw, var(--text-6xl)); font-weight: var(--weight-black); margin: var(--space-200) 0 var(--space-300); max-width: 15ch; }
+  .hero p.lede { font-size: var(--text-xl); color: var(--gray-400); max-width: 62ch; line-height: var(--leading-relaxed); }
+  .hero-stats { display: flex; flex-wrap: wrap; gap: var(--space-600); margin-top: var(--space-700); }
+  .hero-stat .n { font-size: var(--text-5xl); font-weight: var(--weight-black); color: #fff; line-height: 1; }
+  .hero-stat .n.hd { color: var(--color-hd); }
+  .hero-stat .l { font-size: var(--text-md); color: var(--gray-500); margin-top: var(--space-75); max-width: 22ch; }
+  .hero-badge {
+    display: inline-block; margin-bottom: var(--space-200); padding: 6px 14px;
+    background: rgba(249,99,2,0.15); color: var(--color-hd); border-radius: var(--radius-round);
+    font-size: var(--text-sm); font-weight: var(--weight-bold); letter-spacing: 0.04em;
+  }
+  .hero-glow { position: absolute; right: -8%; top: -20%; width: 640px; height: 640px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(235,16,0,0.25), transparent 62%); z-index: 1; pointer-events: none; }
+
+  /* === METRIC CARDS === */
+  .metric-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-400); }
+  .metric-card {
+    background: var(--color-background-layer-1); border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg); padding: var(--space-500) var(--space-400); position: relative; overflow: hidden;
+  }
+  .metric-card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background: var(--color-accent); }
+  .metric-card .big { font-size: var(--text-6xl); font-weight: var(--weight-black); line-height: 1; color: var(--color-accent); }
+  .metric-card.under .big { color: var(--color-text-primary); }
+  .metric-card.under::before { background: var(--color-success); }
+  .metric-card h3 { font-size: var(--text-lg); font-weight: var(--weight-bold); margin: var(--space-200) 0 var(--space-75); }
+  .metric-card p { font-size: var(--text-md); color: var(--color-text-secondary); }
+  .blended-band {
+    margin-top: var(--space-400); background: var(--color-accent-soft); border-radius: var(--radius-lg);
+    padding: var(--space-400) var(--space-500); display: flex; align-items: center; gap: var(--space-400); flex-wrap: wrap;
+  }
+  .blended-band .k { font-size: var(--text-4xl); font-weight: var(--weight-black); color: var(--color-accent); }
+  .blended-band .t { font-size: var(--text-base); color: var(--color-text-secondary); max-width: 62ch; }
+
+  /* === SPLIT / EVOLUTION === */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-500); align-items: stretch; }
+  .panel { background: var(--color-background-layer-1); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); padding: var(--space-500); }
+  .panel.dark { background: var(--gray-900); color: #fff; }
+  .panel.dark h3 { color: #fff; }
+  .panel .tag { font-size: var(--text-sm); font-weight: var(--weight-bold); text-transform: uppercase; letter-spacing: 0.06em; }
+  .panel .tag.flat { color: var(--color-success); }
+  .panel .tag.climb { color: var(--color-hd); }
+  .panel h3 { font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: var(--space-100) 0 var(--space-200); }
+  .panel ul { list-style: none; }
+  .panel li { padding-left: var(--space-300); position: relative; margin-bottom: var(--space-100); color: var(--color-text-secondary); }
+  .panel.dark li { color: var(--gray-400); }
+  .panel li::before { content:""; position:absolute; left:0; top:9px; width:8px; height:8px; border-radius:50%; background: var(--color-accent); }
+  .panel.dark li::before { background: var(--color-hd); }
+
+  /* mini bar chart */
+  .barviz { margin-top: var(--space-300); }
+  .barrow { display: grid; grid-template-columns: 118px 1fr 56px; align-items: center; gap: var(--space-200); margin-bottom: var(--space-100); font-size: var(--text-sm); }
+  .barrow .lab { color: var(--color-text-secondary); }
+  .bartrack { height: 12px; background: var(--gray-200); border-radius: var(--radius-round); overflow: hidden; }
+  .barfill { height: 100%; border-radius: var(--radius-round); width: 0; transition: width 1s ease; }
+  .barfill.aa { background: var(--color-success); }
+  .barfill.cja { background: var(--color-hd); }
+  .barfill.edc { background: var(--color-accent); }
+  .barrow .val { text-align: right; font-weight: var(--weight-bold); color: var(--color-text-primary); }
+  .barcommit { font-size: var(--text-xs); color: var(--color-text-tertiary); margin-top: var(--space-100); }
+
+  /* === INVESTMENT/SUPPORT stat trio === */
+  .support-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-400); }
+  .support-card { border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); padding: var(--space-500) var(--space-400); background: var(--color-surface); }
+  .support-card .big { font-size: var(--text-5xl); font-weight: var(--weight-black); line-height: 1; }
+  .support-card.zero .big { color: var(--color-hd); }
+  .support-card.absorb .big { color: var(--color-accent); }
+  .support-card h3 { font-size: var(--text-base); font-weight: var(--weight-bold); margin: var(--space-300) 0 var(--space-75); }
+  .support-card p { font-size: var(--text-md); color: var(--color-text-secondary); }
+  .note-band { margin-top: var(--space-400); background: var(--gray-900); color: var(--gray-300); border-radius: var(--radius-lg); padding: var(--space-400) var(--space-500); font-size: var(--text-base); line-height: var(--leading-relaxed); }
+  .note-band strong { color: #fff; }
+
+  /* GBS callout row */
+  .gbs-row { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-300); margin-top: var(--space-400); }
+  .gbs { text-align: center; padding: var(--space-400) var(--space-200); background: var(--color-hd-soft); border-radius: var(--radius-md); }
+  .gbs .n { font-size: var(--text-3xl); font-weight: var(--weight-black); color: var(--color-hd); }
+  .gbs .l { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-tertiary); font-weight: var(--weight-semibold); margin-top: 4px; }
+
+  /* === TABS === */
+  .tabbar { display: flex; gap: var(--space-100); border-bottom: 1px solid var(--color-border); margin-bottom: var(--space-400); flex-wrap: wrap; }
+  .tabbtn { background: none; border: none; cursor: pointer; font-family: inherit; font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--color-text-tertiary); padding: var(--space-200) var(--space-200); border-bottom: 3px solid transparent; margin-bottom: -1px; transition: color .2s, border-color .2s; }
+  .tabbtn:hover { color: var(--color-text-primary); }
+  .tabbtn.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+  .tabpanel { display: none; }
+  .tabpanel.active { display: block; animation: fade .35s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .goal-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-300); }
+  .goal { background: var(--color-background-layer-1); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-md); padding: var(--space-400); }
+  .goal h4 { font-size: var(--text-lg); font-weight: var(--weight-bold); color: var(--color-hd); margin-bottom: var(--space-75); }
+  .goal p { font-size: var(--text-md); color: var(--color-text-secondary); }
+  .uc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-300); }
+  .uc { border: 1px solid var(--color-border-subtle); border-left: 3px solid var(--color-accent); border-radius: var(--radius-md); padding: var(--space-400); background: var(--color-surface); }
+  .uc .k { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-hd); font-weight: var(--weight-bold); }
+  .uc h4 { font-size: var(--text-lg); font-weight: var(--weight-bold); margin: var(--space-75) 0 var(--space-100); }
+  .uc p { font-size: var(--text-md); color: var(--color-text-secondary); }
+
+  /* === COMPARISON TABLE === */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); }
+  table.cmp { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 720px; }
+  table.cmp th, table.cmp td { text-align: left; padding: var(--space-200) var(--space-300); font-size: var(--text-md); }
+  table.cmp thead th { background: var(--color-accent); color: #fff; font-weight: var(--weight-bold); font-size: var(--text-sm); letter-spacing: 0.02em; }
+  table.cmp thead th.ult { background: var(--color-accent-hover); }
+  table.cmp tbody tr:nth-child(even) { background: var(--color-background-layer-2); }
+  table.cmp td.feat { font-weight: var(--weight-bold); color: var(--color-text-primary); }
+  table.cmp td.sel { color: var(--color-text-tertiary); }
+  table.cmp td.ult { color: var(--color-text-primary); font-weight: var(--weight-semibold); }
+  table.cmp td.ult .up { color: var(--color-hd); font-weight: var(--weight-bold); }
+  table.cmp td.why { color: var(--color-text-secondary); }
+  .peak-band { margin-top: var(--space-400); display: flex; gap: var(--space-400); align-items: center; background: var(--color-accent-soft); border-radius: var(--radius-lg); padding: var(--space-400) var(--space-500); flex-wrap: wrap; }
+  .peak-band .k { font-size: var(--text-5xl); font-weight: var(--weight-black); color: var(--color-accent); line-height: 1; }
+  .peak-band .t strong { display: block; font-size: var(--text-lg); margin-bottom: 4px; }
+  .peak-band .t span { color: var(--color-text-secondary); font-size: var(--text-md); }
+
+  /* === INVESTMENT === */
+  .invest { background: var(--color-background-layer-1); }
+  .invest-head { display: flex; align-items: baseline; gap: var(--space-200); flex-wrap: wrap; margin-bottom: var(--space-100); }
+  .invest-head .from { font-size: var(--text-5xl); font-weight: var(--weight-black); color: var(--color-text-tertiary); }
+  .invest-head .arrow { font-size: var(--text-4xl); color: var(--color-accent); }
+  .invest-head .to { font-size: var(--text-5xl); font-weight: var(--weight-black); color: var(--color-accent); }
+  .invest-tables { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-400); margin-top: var(--space-500); }
+  .itable { background: var(--color-surface); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); overflow: hidden; }
+  .itable h4 { font-size: var(--text-md); text-transform: uppercase; letter-spacing: 0.05em; font-weight: var(--weight-bold); padding: var(--space-300) var(--space-400); border-bottom: 1px solid var(--color-border-subtle); color: var(--color-text-secondary); }
+  .itable.proposed h4 { background: var(--color-accent-soft); color: var(--color-accent); }
+  .irow { display: flex; justify-content: space-between; gap: var(--space-200); padding: var(--space-200) var(--space-400); font-size: var(--text-md); border-bottom: 1px solid var(--color-border-subtle); }
+  .irow:last-child { border-bottom: none; }
+  .irow .lbl { color: var(--color-text-secondary); }
+  .irow .amt { font-weight: var(--weight-semibold); white-space: nowrap; }
+  .irow.new .lbl { color: var(--color-hd); font-weight: var(--weight-semibold); }
+  .irow.total { background: var(--color-accent-soft); font-weight: var(--weight-bold); }
+  .irow.total .lbl, .irow.total .amt { color: var(--color-accent); }
+  .incr-band { margin-top: var(--space-400); background: var(--color-accent); color: #fff; border-radius: var(--radius-lg); padding: var(--space-400) var(--space-500); font-size: var(--text-lg); font-weight: var(--weight-semibold); line-height: var(--leading-normal); }
+  .bps-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-200); margin-top: var(--space-500); }
+  .bps { text-align: center; padding: var(--space-400) var(--space-100); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-md); background: var(--color-surface); }
+  .bps.hl { border-color: var(--color-accent); background: var(--color-accent-soft); }
+  .bps .yr { font-size: var(--text-sm); color: var(--color-text-tertiary); font-weight: var(--weight-semibold); }
+  .bps .v { font-size: var(--text-2xl); font-weight: var(--weight-black); margin: 4px 0; }
+  .bps.hl .v { color: var(--color-accent); }
+  .bps .sub { font-size: var(--text-xs); color: var(--color-text-tertiary); }
+
+  /* === CTA === */
+  .cta { background: var(--gray-900); color: #fff; text-align: center; }
+  .cta h2 { font-size: var(--text-4xl); font-weight: var(--weight-black); max-width: 20ch; margin: 0 auto var(--space-200); }
+  .cta p { color: var(--gray-400); font-size: var(--text-lg); max-width: 60ch; margin: 0 auto var(--space-500); line-height: var(--leading-relaxed); }
+  .cta .btn { display: inline-block; background: var(--color-accent); color: #fff; text-decoration: none; font-weight: var(--weight-bold); font-size: var(--text-lg); padding: var(--space-200) var(--space-500); border-radius: var(--radius-round); transition: background .2s, transform .2s; }
+  .cta .btn:hover { background: var(--color-accent-hover); transform: translateY(-2px); }
+  .cta .recap { display: flex; justify-content: center; gap: var(--space-700); flex-wrap: wrap; margin-top: var(--space-700); }
+  .cta .recap .n { font-size: var(--text-3xl); font-weight: var(--weight-black); color: var(--color-hd); }
+  .cta .recap .l { font-size: var(--text-sm); color: var(--gray-500); }
+
+  /* === FOOTER === */
+  footer.legal { background: var(--gray-900); border-top: 1px solid rgba(255,255,255,0.08); color: var(--gray-600); }
+  footer.legal .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-400); padding-bottom: var(--space-400); flex-wrap: wrap; gap: var(--space-200); }
+  footer.legal .adobe { color: var(--color-accent); font-weight: var(--weight-black); font-size: var(--text-lg); }
+  footer.legal small { font-size: var(--text-sm); }
+
+  /* === ANIMATION === */
+  .animate-in { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+  .animate-in.visible { opacity: 1; transform: translateY(0); }
+
+  a:focus-visible, button:focus-visible, .btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 1024px) {
+    .invest-tables { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    section { padding: var(--space-700) 0; }
+    .hero { padding: var(--space-800) 0; }
+    nav.top ul { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; background: #fff; border-bottom: 1px solid var(--color-border); padding: var(--space-200) var(--space-400); gap: var(--space-100); }
+    nav.top ul.open { display: flex; }
+    nav.top a { padding: var(--space-100) 0; }
+    .nav-toggle { display: block; }
+    .metric-grid, .support-grid, .goal-grid, .uc-grid { grid-template-columns: 1fr; }
+    .gbs-row, .bps-strip { grid-template-columns: repeat(2,1fr); }
+    .split { grid-template-columns: 1fr; }
+    .hero-stats { gap: var(--space-400); }
+  }
+  @media (max-width: 480px) {
+    :root { --text-6xl: 40px; --text-5xl: 34px; --text-4xl: 28px; }
+    .wrap { padding: 0 var(--space-300); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top">
+  <div class="wrap">
+    <div class="brand">
+      <span class="adobe">Adobe</span>
+      <span class="sep">×</span>
+      <span class="ctx">The Home Depot</span>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <ul id="navlist">
+      <li><a href="#usage">Usage</a></li>
+      <li><a href="#evolution">Evolution</a></li>
+      <li><a href="#support">Adobe's Support</a></li>
+      <li><a href="#alignment">Alignment</a></li>
+      <li><a href="#ultimate">Ultimate</a></li>
+      <li><a href="#investment">Investment</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="hero-badge">Contract &amp; Usage Analysis</span>
+    <div class="overline">Home Depot · AA + CJA Renewal</div>
+    <h1>Usage has outgrown the contract.</h1>
+    <p class="lede">A data-backed review of Home Depot's Adobe Analytics and Customer Journey Analytics footprint — what's contracted, what's actually consumed, and the case for right-sizing to CJA Ultimate.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="n hd" data-count="137.1" data-suffix="%" data-dp="1">0%</div>
+        <div class="l">Blended utilization across the current agreement</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n" data-count="22">0</div>
+        <div class="l">of 23 months CJA exceeded its committed capacity</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n hd" data-count="3.63" data-prefix="$" data-suffix="M" data-dp="2">$0</div>
+        <div class="l">In overage Adobe absorbed over 8 quarters</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- SECTION 1 — USAGE -->
+<section id="usage">
+  <div class="wrap">
+    <div class="section-head animate-in">
+      <div class="overline">Current State</div>
+      <h2>A tale of two workloads</h2>
+      <p>Adobe Analytics is a bounded, well-provisioned dependency with consistent headroom. Customer Journey Analytics and Extended Data Capacity are running structurally over commit — a sustained trend, not a one-time spike.</p>
+    </div>
+
+    <div class="metric-grid">
+      <div class="metric-card under animate-in">
+        <div class="big" data-count="66" data-suffix="%">0%</div>
+        <h3>Adobe Analytics</h3>
+        <p>7.08B monthly commit · 4.7B past-12-mo average. Never once over commit.</p>
+      </div>
+      <div class="metric-card animate-in">
+        <div class="big" data-count="176" data-suffix="%">0%</div>
+        <h3>Customer Journey Analytics</h3>
+        <p>97B annual commit · 171B past-12-mo average. Running +76% over commit.</p>
+      </div>
+      <div class="metric-card animate-in">
+        <div class="big" data-count="116" data-suffix="%">0%</div>
+        <h3>Extended Data Capacity</h3>
+        <p>180B annual commit · 209B past-12-mo average. Running +16% over commit.</p>
+      </div>
+    </div>
+
+    <div class="blended-band animate-in">
+      <div class="k" data-count="137.1" data-suffix="%" data-dp="1">0%</div>
+      <div class="t">Total blended utilization across the agreement. The imbalance — AA underused, CJA and EDC overused — is what drives this renewal conversation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 — EVOLUTION -->
+<section id="evolution" style="background:var(--color-background-layer-2)">
+  <div class="wrap">
+    <div class="section-head animate-in">
+      <div class="overline">Home Depot's Evolution: AA to CJA</div>
+      <h2>Reporting demand follows the business — not the product</h2>
+      <p>As Home Depot's analytics strategy matured, reporting workloads shifted from Adobe Analytics to Customer Journey Analytics. The requirement didn't shrink — it moved, and in many areas it keeps expanding.</p>
+    </div>
+
+    <div class="split">
+      <div class="panel animate-in">
+        <span class="tag flat">Adobe Analytics · flat</span>
+        <h3>A bounded Data Science input</h3>
+        <ul>
+          <li>Growth of just +4.1% over 29 months</li>
+          <li>Over commit in 0 of 29 months</li>
+          <li>Remains in place mainly for the Data Science–critical SiteCatalyst Data Feed</li>
+        </ul>
+        <div class="barviz">
+          <div class="barrow"><span class="lab">Adobe Analytics</span><div class="bartrack"><span class="barfill aa" data-w="66"></span></div><span class="val">66%</span></div>
+          <div class="barcommit">Consistent headroom below the 100% commit line.</div>
+        </div>
+      </div>
+      <div class="panel dark animate-in">
+        <span class="tag climb">Combined CJA · climbing</span>
+        <h3>The platform the business now runs on</h3>
+        <ul>
+          <li>Core Rows up +69.3% · over commit in 21 of 23 months</li>
+          <li>Combined CJA up +53.9% · over commit in 22 of 23 months</li>
+          <li>Fed by store transactions, POS, CRM, and classification data — not just web</li>
+        </ul>
+        <div class="barviz">
+          <div class="barrow"><span class="lab" style="color:var(--gray-400)">Combined CJA</span><div class="bartrack" style="background:rgba(255,255,255,0.15)"><span class="barfill cja" data-w="176"></span></div><span class="val" style="color:#fff">176%</span></div>
+          <div class="barcommit" style="color:var(--gray-500)">Structurally above the 100% commit line, and still rising.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-band animate-in">
+      <strong>Executive takeaway:</strong> Home Depot isn't investing in analytics products — it's investing in the reporting, customer intelligence, and decision-making capability required for growth. The usage data shows that growth is concentrated in CJA, not AA. Since 2020, online revenue has grown ~$10.8B while Adobe investment stayed at roughly 3 basis points of online sales.
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 — ADOBE'S SUPPORT -->
+<section id="support">
+  <div class="wrap">
+    <div class="section-head animate-in">
+      <div class="overline">Adobe's Investment &amp; Support</div>
+      <h2>Adobe already invested alongside Home Depot</h2>
+      <p>Through a sustained period of over-commit, Adobe extended capability at no incremental cost rather than enforcing every overage dollar-for-dollar. Right-sizing converts that informal support into a structured, predictable partnership.</p>
+    </div>
+
+    <div class="support-grid">
+      <div class="support-card absorb animate-in">
+        <div class="big" data-count="3.63" data-prefix="$" data-suffix="M" data-dp="2">$0</div>
+        <h3>Overage incurred, not billed at full rate</h3>
+        <p>Combined core + extended overage across 8 quarters (Q3 2024 – Q2 2026), managed collaboratively rather than strictly enforced.</p>
+      </div>
+      <div class="support-card zero animate-in">
+        <div class="big">$0</div>
+        <h3>Graph-Based Stitching · ~$1.15M value</h3>
+        <p>Provided as a no-cost add-on — unlocked 25% more identified customer traffic.</p>
+      </div>
+      <div class="support-card zero animate-in">
+        <div class="big">$0</div>
+        <h3>+100 Derived Fields</h3>
+        <p>Provided as a no-cost add-on — expanded custom reporting-logic capacity.</p>
+      </div>
+    </div>
+
+    <div class="section-head animate-in" style="margin-top:var(--space-700)">
+      <div class="overline" style="color:var(--color-hd)">Graph-Based Stitching · Proof of Concept</div>
+      <h2 style="font-size:var(--text-3xl)">A $0 pilot that made $5.67B of revenue measurable</h2>
+    </div>
+    <div class="gbs-row animate-in">
+      <div class="gbs"><div class="n" data-count="25" data-prefix="+" data-suffix="%">+0%</div><div class="l">More identified traffic</div></div>
+      <div class="gbs"><div class="n" data-count="968.8" data-prefix="+" data-suffix="M" data-dp="1">+0M</div><div class="l">Annual visits connected</div></div>
+      <div class="gbs"><div class="n" data-count="5.67" data-prefix="$" data-suffix="B" data-dp="2">$0B</div><div class="l">Revenue now measurable</div></div>
+      <div class="gbs"><div class="n" data-count="28.35" data-prefix="$" data-suffix="B" data-dp="2">$0B</div><div class="l">Total revenue under analysis</div></div>
+    </div>
+    <div class="note-band animate-in">For every $4 of ecommerce revenue currently measurable, Graph-Based Stitching enables visibility into an additional $1 — turning previously anonymous activity into <strong>measurable, attributable business outcomes</strong> across Pro visibility, marketing attribution, and Orange Apron Media.</div>
+  </div>
+</section>
+
+<!-- SECTION 4 — ALIGNMENT (tabbed) -->
+<section id="alignment" style="background:var(--color-background-layer-2)">
+  <div class="wrap">
+    <div class="section-head animate-in">
+      <div class="overline">CJA Alignment With Business Priorities</div>
+      <h2>Home Depot is no longer measuring a website</h2>
+      <p>Journeys now span web, app, stores, BOPIS, deliver-from-store, Pro accounts, retail media, and multi-month projects. CJA is the platform that connects those touchpoints to revenue — and it maps directly to the FY26 plan.</p>
+    </div>
+
+    <div class="tabbar" role="tablist">
+      <button class="tabbtn active" data-tab="goals" role="tab" aria-selected="true">FY26 Goals</button>
+      <button class="tabbtn" data-tab="uc1" role="tab" aria-selected="false">Omnichannel &amp; Retail Media</button>
+      <button class="tabbtn" data-tab="uc2" role="tab" aria-selected="false">Conversion &amp; Acquisition</button>
+    </div>
+
+    <div class="tabpanel active" id="goals" role="tabpanel">
+      <div class="goal-grid">
+        <div class="goal"><h4>Total Revenue Growth</h4><p>Drive 2.5%–4.5% total revenue growth.</p></div>
+        <div class="goal"><h4>eCommerce Growth</h4><p>Double-digit growth — +$25B online.</p></div>
+        <div class="goal"><h4>Pro Segment Growth</h4><p>Grow and prioritize the Pro segment (Pro Xtra, SRS/GMS).</p></div>
+        <div class="goal"><h4>Orange Apron Media</h4><p>Deliver +$200M profit via Orange Apron Media.</p></div>
+        <div class="goal"><h4>Operational Efficiency</h4><p>Improve efficiency via digital, AI, and agentic capabilities.</p></div>
+        <div class="goal"><h4>Unified Omnichannel</h4><p>Unify siloed online, marketing, and OAM into one journey.</p></div>
+      </div>
+    </div>
+
+    <div class="tabpanel" id="uc1" role="tabpanel">
+      <div class="uc-grid">
+        <div class="uc"><div class="k">Omnichannel proof point</div><h4>Black Friday: online content, in-store purchase</h4><p>Customers view content online, then buy in-store — invisible when web and store data are analyzed separately. CJA connects them into one repeatable journey view.</p></div>
+        <div class="uc"><div class="k">Share of wallet</div><h4>Pro customer segmentation</h4><p>Pro drives ~50% of revenue but stays under-optimized. Graph-based identity stitching segments contractors by real behavior, revealing repeat-purchase and replenishment patterns.</p></div>
+        <div class="uc"><div class="k">Orange Apron Media</div><h4>Closed-loop attribution</h4><p>Ad exposure-to-purchase tracking builds a defensible, journey-based measurement layer for suppliers — proving media ROI for OAM.</p></div>
+      </div>
+    </div>
+
+    <div class="tabpanel" id="uc2" role="tabpanel">
+      <div class="uc-grid">
+        <div class="uc"><div class="k">Conversion optimization</div><h4>Journey drop-off &amp; root cause</h4><p>3.87B annual visits, limited visibility into where customers abandon. AI Key Driver Analysis surfaces root causes automatically across search → product → cart → checkout.</p></div>
+        <div class="uc"><div class="k">Basket expansion</div><h4>Next best offer / bundling</h4><p>Product affinity analysis and up to 500 derived fields power project bundles — paint + tools, or kitchen + installation.</p></div>
+        <div class="uc"><div class="k">Prospect acquisition</div><h4>Paid media attribution</h4><p>Cross-channel attribution and online-to-store linkage credit the upper- and mid-funnel media that actually drives conversion.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 — ULTIMATE -->
+<section id="ultimate">
+  <div class="wrap">
+    <div class="section-head animate-in">
+      <div class="overline">Why CJA Ultimate vs. CJA Select</div>
+      <h2>Home Depot has outgrown Select's operational scale</h2>
+      <p>Current CJA consumption already exceeds contracted capacity in nearly every recent month. Ultimate isn't a speculative upgrade — it's built for demand that has already arrived.</p>
+    </div>
+
+    <div class="table-wrap animate-in">
+      <table class="cmp">
+        <thead>
+          <tr><th>Feature</th><th>CJA Select</th><th class="ult">CJA Ultimate</th><th>Why it matters to Home Depot</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="feat">Concurrent reports</td><td class="sel">6 simultaneous</td><td class="ult"><span class="up">10</span> simultaneous</td><td class="why">80 self-service users, 4.41s avg queue — reduces wait times, drives adoption</td></tr>
+          <tr><td class="feat">Monthly report capacity</td><td class="sel">750K / mo</td><td class="ult"><span class="up">5M</span> / mo</td><td class="why">Scales with dashboard, API, and self-service growth as Tableau migrates to CJA</td></tr>
+          <tr><td class="feat">Lookup dataset capacity</td><td class="sel">100M keys</td><td class="ult"><span class="up">1B</span> keys</td><td class="why">Select's 100M limit is already insufficient — 300M–500M keys needed for Pro/SKU enrichment</td></tr>
+          <tr><td class="feat">Full table export</td><td class="sel">30M rows/export</td><td class="ult"><span class="up">300M</span> rows/export</td><td class="why">Offloads power-user workloads for Tableau and data science</td></tr>
+          <tr><td class="feat">Derived fields</td><td class="sel">100 fields</td><td class="ult"><span class="up">500</span> fields</td><td class="why">5× capacity enables faster analyst innovation on reporting logic</td></tr>
+          <tr><td class="feat">Data views</td><td class="sel">600 / connection</td><td class="ult"><span class="up">1,000</span> / connection</td><td class="why">Separate views for DIY, Pro, Ecommerce, Mobile, Stores, OAM, Executive</td></tr>
+          <tr><td class="feat">Identity replay lookback</td><td class="sel">7 days</td><td class="ult"><span class="up">14</span> days</td><td class="why">Captures more research activity before login — stronger attribution over longer cycles</td></tr>
+          <tr><td class="feat">Real-time reporting &amp; Key Driver Analysis</td><td class="sel">Not included</td><td class="ult"><span class="up">Included</span></td><td class="why">Sub-minute latency plus AI-surfaced purchase drivers across the enterprise</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="peak-band animate-in">
+      <div class="k" data-count="190" data-suffix="%">0%</div>
+      <div class="t"><strong>Peak Core Rows utilization (June 2026)</strong><span>Consumption already exceeds contracted Core Row and combined-row capacity in nearly every recent month.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6 — INVESTMENT -->
+<section id="investment" class="invest">
+  <div class="wrap">
+    <div class="section-head animate-in">
+      <div class="overline">Investment &amp; Rationale</div>
+      <h2>A right-sizing initiative — not paying more for the same product</h2>
+      <p>The proposed renewal aligns commercial terms to consumption that already exists: nearly 2× core CJA capacity, expanded historical retention, and platform evolution since the original February 2024 agreement.</p>
+    </div>
+
+    <div class="invest-head animate-in">
+      <span class="from">$7.02M</span>
+      <span class="arrow">→</span>
+      <span class="to">$9.695M</span>
+    </div>
+    <p class="animate-in" style="color:var(--color-text-secondary)">Current total investment → proposed total investment</p>
+
+    <div class="invest-tables animate-in">
+      <div class="itable">
+        <h4>Current investment</h4>
+        <div class="irow"><span class="lbl">Analytics Ultimate</span><span class="amt">$2.77M</span></div>
+        <div class="irow"><span class="lbl">SiteCatalyst Data Feed</span><span class="amt">$790K</span></div>
+        <div class="irow"><span class="lbl">CJA for AA Ultimate</span><span class="amt">$3.19M</span></div>
+        <div class="irow"><span class="lbl">Extended Data Capacity</span><span class="amt">$270K</span></div>
+        <div class="irow"><span class="lbl">Graph-Based Stitching</span><span class="amt">$0</span></div>
+        <div class="irow total"><span class="lbl">Total</span><span class="amt">$7.02M</span></div>
+      </div>
+      <div class="itable proposed">
+        <h4>Proposed investment</h4>
+        <div class="irow"><span class="lbl">CJA Ultimate (190B Rows)</span><span class="amt">$9.12M</span></div>
+        <div class="irow"><span class="lbl">Extended Data Capacity (250B Rows)</span><span class="amt">$375K</span></div>
+        <div class="irow"><span class="lbl">Data Distiller</span><span class="amt">$200K</span></div>
+        <div class="irow new"><span class="lbl">Coworker / Analytics Evolution</span><span class="amt">Included</span></div>
+        <div class="irow"><span class="lbl">SiteCatalyst Data Feed</span><span class="amt">Included</span></div>
+        <div class="irow total"><span class="lbl">Total Proposed</span><span class="amt">$9.695M</span></div>
+      </div>
+    </div>
+
+    <div class="incr-band animate-in">
+      Incremental annual investment: <strong>$2.67M (+38.0%)</strong> — driven by nearly 2× core CJA capacity, expanded historical retention, and platform evolution since the original February 2024 agreement.
+    </div>
+
+    <div class="section-head animate-in" style="margin-top:var(--space-700)">
+      <div class="overline">Why 3 Basis Points?</div>
+      <h2 style="font-size:var(--text-3xl)">The renewal returns investment to roughly its 2024 relative level</h2>
+    </div>
+    <div class="bps-strip animate-in">
+      <div class="bps"><div class="yr">2024 Actual</div><div class="v">2.91</div><div class="sub">bps · $7.02M / ~$24.1B</div></div>
+      <div class="bps"><div class="yr">2025</div><div class="v">2.68</div><div class="sub">bps · $7.02M / $26.2B</div></div>
+      <div class="bps"><div class="yr">2026 Projected</div><div class="v">2.51</div><div class="sub">bps · $7.02M / ~$28.0B</div></div>
+      <div class="bps hl"><div class="yr">2027 Renewal Yr 1</div><div class="v">3.01</div><div class="sub">bps · $9.0M / ~$29.9B</div></div>
+    </div>
+    <p class="animate-in" style="color:var(--color-text-tertiary); font-size:var(--text-md); margin-top:var(--space-300)">A 3.0–3.2 bps range either way — right-sizing capacity that has already outgrown the agreement, not a recovery of past overages.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <h2>The demand is already here. Let's size the contract to match it.</h2>
+    <p>29 months of usage data confirm the requirement is real, growing, and outpacing current capacity. CJA Ultimate provides the foundation for Home Depot's next phase — enterprise-scale reporting, customer intelligence, and AI-assisted decisions.</p>
+    <a class="btn" href="#usage">Review the renewal proposal</a>
+    <div class="recap">
+      <div><div class="n" data-count="96" data-prefix="+" data-suffix="%">+0%</div><div class="l">Core CJA capacity (97B → 190B rows)</div></div>
+      <div><div class="n" data-count="3.63" data-prefix="$" data-suffix="M" data-dp="2">$0M</div><div class="l">Overage Adobe absorbed</div></div>
+      <div><div class="n" data-count="1.15" data-prefix="$" data-suffix="M+" data-dp="2">$0M</div><div class="l">No-cost functionality provided</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="legal">
+  <div class="wrap">
+    <span class="adobe">Adobe</span>
+    <small>Prepared by Adobe for The Home Depot · © 2026 Adobe. All Rights Reserved. Adobe Confidential.</small>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.querySelector('.nav-toggle');
+  const navlist = document.getElementById('navlist');
+  toggle.addEventListener('click', () => {
+    const open = navlist.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navlist.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navlist.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Scroll-triggered animation
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.animate-in').forEach(el => io.observe(el));
+
+  // Count-up + bar fills
+  function animateCount(el) {
+    const target = parseFloat(el.dataset.count);
+    const dp = parseInt(el.dataset.dp || '0', 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const dur = 1100; const start = performance.now();
+    function frame(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = (target * eased).toFixed(dp);
+      el.textContent = prefix + Number(val).toLocaleString('en-US', {minimumFractionDigits: dp, maximumFractionDigits: dp}) + suffix;
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  const countIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); countIO.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => countIO.observe(el));
+
+  const barIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) {
+      const w = Math.min(parseFloat(e.target.dataset.w), 100);
+      e.target.style.width = w + '%'; barIO.unobserve(e.target);
+    }});
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.barfill').forEach(el => barIO.observe(el));
+
+  // Tabs
+  const tabbtns = document.querySelectorAll('.tabbtn');
+  tabbtns.forEach(btn => btn.addEventListener('click', () => {
+    tabbtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+    document.querySelectorAll('.tabpanel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active'); btn.setAttribute('aria-selected', 'true');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  }));
+
+  // Scroll-spy nav highlight
+  const sections = document.querySelectorAll('main section[id], section.cta');
+  const navlinks = document.querySelectorAll('nav.top a');
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navlinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-50% 0px -45% 0px' });
+  document.querySelectorAll('main section[id]').forEach(s => spy.observe(s));
+</script>
+</body>
+</html>

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PetSmart CJA RFP Response | Adobe</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  img, svg { display: block; max-width: 100%; }
+
+  :root {
+    --gray-50:#FFFFFF; --gray-75:#FAFAFA; --gray-100:#F5F5F5; --gray-200:#EAEAEA;
+    --gray-300:#E1E1E1; --gray-400:#CACACA; --gray-500:#B3B3B3; --gray-600:#8E8E8E;
+    --gray-700:#6E6E6E; --gray-800:#4B4B4B; --gray-900:#2C2C2C;
+
+    --color-background:var(--gray-50);
+    --color-layer-1:var(--gray-75);
+    --color-layer-2:var(--gray-100);
+    --color-text-primary:var(--gray-900);
+    --color-text-secondary:var(--gray-700);
+    --color-text-tertiary:var(--gray-600);
+    --color-border:var(--gray-300);
+    --color-border-subtle:var(--gray-200);
+    --color-surface:var(--gray-50);
+    --color-surface-hover:var(--gray-100);
+
+    --color-accent:#EB1000; --color-accent-hover:#D10000;
+    --color-accent-text:#FFFFFF; --color-accent-soft:#FFF0EE;
+    --color-info:#378EF0; --color-success:#2D9D78;
+    --color-warning:#E68619; --color-warning-soft:#FDF3E7; --color-danger:#D7373F;
+    --color-danger-soft:#FCEEEE;
+
+    --space-50:4px; --space-75:8px; --space-100:12px; --space-200:16px;
+    --space-300:24px; --space-400:32px; --space-500:40px; --space-600:48px;
+    --space-700:64px; --space-800:80px; --space-900:96px; --space-1000:120px;
+
+    --radius-sm:4px; --radius-md:8px; --radius-lg:12px; --radius-xl:16px; --radius-round:9999px;
+
+    --font-family:'Adobe Clean','Source Sans 3','Segoe UI',system-ui,-apple-system,sans-serif;
+
+    --text-xs:11px; --text-sm:12px; --text-md:14px; --text-base:16px; --text-lg:18px;
+    --text-xl:20px; --text-2xl:24px; --text-3xl:28px; --text-4xl:34px; --text-5xl:40px; --text-6xl:50px;
+
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+    --shadow-md:0 4px 12px rgba(0,0,0,.08);
+    --shadow-lg:0 8px 24px rgba(0,0,0,.12);
+  }
+
+  body {
+    font-family:var(--font-family);
+    font-size:var(--text-base);
+    line-height:1.5;
+    color:var(--color-text-primary);
+    background:var(--color-background);
+  }
+
+  .wrap { max-width:1180px; margin:0 auto; padding:0 var(--space-300); }
+
+  /* NAV */
+  nav {
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,.9);
+    backdrop-filter:saturate(180%) blur(10px);
+    border-bottom:1px solid var(--color-border-subtle);
+  }
+  .nav-inner { display:flex; align-items:center; justify-content:space-between; height:60px; }
+  .nav-brand { display:flex; align-items:center; gap:var(--space-100); font-weight:900; font-size:var(--text-lg); letter-spacing:-.01em; }
+  .nav-brand .adobe { color:var(--color-accent); }
+  .nav-brand .sep { color:var(--color-border); font-weight:400; }
+  .nav-brand .cust { color:var(--color-text-secondary); font-weight:700; }
+  .nav-links { display:flex; gap:var(--space-300); }
+  .nav-links a {
+    color:var(--color-text-secondary); text-decoration:none;
+    font-size:var(--text-md); font-weight:600; padding:var(--space-75) 0;
+    border-bottom:2px solid transparent; transition:color .2s,border-color .2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color:var(--color-accent); border-color:var(--color-accent); }
+  .nav-toggle { display:none; }
+
+  /* HERO */
+  .hero {
+    position:relative;
+    background:linear-gradient(180deg,#FBFDFF 0%, #F3F8FF 55%, #FFFFFF 100%);
+    padding:var(--space-900) 0 var(--space-800);
+    border-bottom:1px solid var(--color-border-subtle);
+  }
+  .hero::before {
+    content:""; position:absolute; left:0; top:0; bottom:0; width:6px;
+    background:var(--color-accent);
+  }
+  .overline {
+    text-transform:uppercase; letter-spacing:.1em; font-size:var(--text-sm);
+    font-weight:700; color:var(--color-accent); margin-bottom:var(--space-200);
+  }
+  .hero h1 {
+    font-size:clamp(var(--text-4xl),5.5vw,var(--text-6xl));
+    font-weight:900; line-height:1.1; letter-spacing:-.02em; max-width:16ch;
+  }
+  .hero p.lede {
+    margin-top:var(--space-300); font-size:var(--text-xl);
+    color:var(--color-text-secondary); max-width:60ch; line-height:1.5;
+  }
+  .hero-actions { margin-top:var(--space-400); display:flex; gap:var(--space-200); flex-wrap:wrap; }
+  .btn {
+    display:inline-block; text-decoration:none; font-weight:700; font-size:var(--text-md);
+    padding:var(--space-100) var(--space-300); border-radius:var(--radius-round);
+    transition:background .2s,transform .1s,box-shadow .2s; cursor:pointer; border:none;
+  }
+  .btn-primary { background:var(--color-accent); color:var(--color-accent-text); }
+  .btn-primary:hover { background:var(--color-accent-hover); transform:translateY(-1px); box-shadow:var(--shadow-md); }
+  .btn-ghost { background:transparent; color:var(--color-text-primary); border:1px solid var(--color-border); }
+  .btn-ghost:hover { background:var(--color-surface-hover); }
+
+  /* SECTION */
+  section { padding:var(--space-800) 0; }
+  .sec-head { max-width:70ch; margin-bottom:var(--space-500); }
+  .sec-kicker {
+    text-transform:uppercase; letter-spacing:.09em; font-size:var(--text-sm);
+    font-weight:700; color:var(--color-text-tertiary); margin-bottom:var(--space-100);
+  }
+  h2 { font-size:clamp(var(--text-3xl),3.5vw,var(--text-4xl)); font-weight:900; letter-spacing:-.01em; line-height:1.15; }
+  .sec-head p { margin-top:var(--space-200); color:var(--color-text-secondary); font-size:var(--text-lg); }
+
+  /* STATS */
+  .stats { background:var(--color-layer-1); border-top:1px solid var(--color-border-subtle); border-bottom:1px solid var(--color-border-subtle); }
+  .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-300); }
+  .stat { text-align:center; padding:var(--space-200); }
+  .stat .num { font-size:var(--text-6xl); font-weight:900; color:var(--color-accent); line-height:1; letter-spacing:-.02em; }
+  .stat .lbl { margin-top:var(--space-100); font-size:var(--text-md); color:var(--color-text-secondary); font-weight:600; }
+
+  /* PILLARS */
+  .pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-300); }
+  .pillar {
+    background:var(--color-layer-1); border:1px solid var(--color-border-subtle);
+    border-radius:var(--radius-lg); padding:var(--space-400);
+  }
+  .pillar .dot { width:38px; height:38px; border-radius:var(--radius-md); background:var(--color-accent-soft);
+    display:flex; align-items:center; justify-content:center; margin-bottom:var(--space-200); }
+  .pillar .dot span { width:14px; height:14px; border-radius:var(--radius-sm); background:var(--color-accent); display:block; }
+  .pillar h3 { font-size:var(--text-xl); font-weight:700; margin-bottom:var(--space-75); }
+  .pillar p { color:var(--color-text-secondary); font-size:var(--text-md); line-height:1.55; }
+
+  /* BROWSER CONTROLS */
+  .controls { display:flex; flex-wrap:wrap; gap:var(--space-300); align-items:flex-end; justify-content:space-between; margin-bottom:var(--space-400); }
+  .seg { display:inline-flex; background:var(--color-layer-2); border-radius:var(--radius-round); padding:var(--space-50); }
+  .seg button {
+    border:none; background:transparent; cursor:pointer; font-family:inherit;
+    font-weight:700; font-size:var(--text-md); color:var(--color-text-secondary);
+    padding:var(--space-75) var(--space-200); border-radius:var(--radius-round); transition:all .2s; white-space:nowrap;
+  }
+  .seg button[aria-pressed="true"] { background:var(--color-surface); color:var(--color-accent); box-shadow:var(--shadow-sm); }
+  .search { position:relative; }
+  .search input {
+    font-family:inherit; font-size:var(--text-md); padding:var(--space-100) var(--space-200);
+    border:1px solid var(--color-border); border-radius:var(--radius-round); width:260px; max-width:100%;
+    color:var(--color-text-primary); background:var(--color-surface);
+  }
+  .search input:focus { outline:2px solid var(--color-accent); outline-offset:1px; border-color:transparent; }
+
+  .chips { display:flex; flex-wrap:wrap; gap:var(--space-75); margin-bottom:var(--space-400); }
+  .chip {
+    border:1px solid var(--color-border); background:var(--color-surface); cursor:pointer;
+    font-family:inherit; font-size:var(--text-sm); font-weight:600; color:var(--color-text-secondary);
+    padding:6px var(--space-200); border-radius:var(--radius-round); transition:all .18s;
+  }
+  .chip:hover { border-color:var(--color-accent); color:var(--color-accent); }
+  .chip[aria-pressed="true"] { background:var(--color-accent); border-color:var(--color-accent); color:#fff; }
+
+  .count-line { font-size:var(--text-md); color:var(--color-text-tertiary); margin-bottom:var(--space-300); font-weight:600; }
+
+  /* CARDS */
+  .cards { display:grid; grid-template-columns:repeat(2,1fr); gap:var(--space-300); align-items:start; }
+  details.card {
+    background:var(--color-surface); border:1px solid var(--color-border-subtle);
+    border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); overflow:hidden; transition:box-shadow .2s,border-color .2s;
+  }
+  details.card[open] { box-shadow:var(--shadow-md); border-color:var(--color-border); }
+  summary.card-head { list-style:none; cursor:pointer; padding:var(--space-300); display:block; }
+  summary.card-head::-webkit-details-marker { display:none; }
+  .card-tags { display:flex; align-items:center; gap:var(--space-75); flex-wrap:wrap; margin-bottom:var(--space-100); }
+  .tag { font-size:var(--text-xs); font-weight:700; text-transform:uppercase; letter-spacing:.05em; padding:3px var(--space-75); border-radius:var(--radius-sm); }
+  .tag-db { background:var(--color-danger-soft); color:var(--color-danger); }
+  .tag-hi { background:var(--color-warning-soft); color:var(--color-warning); }
+  .tag-cat { background:var(--color-layer-2); color:var(--color-text-tertiary); }
+  .tag-id { margin-left:auto; font-size:var(--text-xs); font-weight:700; color:var(--color-text-tertiary); }
+  .card-title { display:flex; align-items:flex-start; justify-content:space-between; gap:var(--space-200); }
+  .card-title h3 { font-size:var(--text-lg); font-weight:700; line-height:1.25; }
+  .chev { flex:0 0 auto; width:22px; height:22px; color:var(--color-text-tertiary); transition:transform .25s; margin-top:2px; }
+  details.card[open] .chev { transform:rotate(180deg); }
+  .card-req { margin-top:var(--space-100); font-size:var(--text-md); color:var(--color-text-secondary); line-height:1.5; }
+
+  .card-body { padding:0 var(--space-300) var(--space-300); border-top:1px solid var(--color-border-subtle); margin-top:var(--space-100); }
+  .card-body .body-label {
+    text-transform:uppercase; letter-spacing:.08em; font-size:var(--text-xs); font-weight:700;
+    color:var(--color-text-tertiary); margin:var(--space-300) 0 var(--space-100);
+  }
+  .card-body ul { list-style:none; display:flex; flex-direction:column; gap:var(--space-100); }
+  .card-body li { position:relative; padding-left:var(--space-300); font-size:var(--text-md); color:var(--color-text-primary); line-height:1.5; }
+  .card-body li::before { content:""; position:absolute; left:6px; top:9px; width:6px; height:6px; border-radius:var(--radius-sm); background:var(--color-accent); }
+  .note {
+    margin-top:var(--space-300); background:var(--color-layer-1); border-left:3px solid var(--color-warning);
+    border-radius:var(--radius-sm); padding:var(--space-200); font-size:var(--text-md); color:var(--color-text-secondary); line-height:1.5;
+  }
+  .note strong { color:var(--color-text-primary); }
+  .empty { grid-column:1/-1; text-align:center; color:var(--color-text-tertiary); padding:var(--space-600); font-size:var(--text-lg); }
+
+  /* FOOTER */
+  footer { border-top:1px solid var(--color-border-subtle); padding:var(--space-500) 0; }
+  .foot-inner { display:flex; align-items:center; justify-content:space-between; gap:var(--space-300); flex-wrap:wrap; }
+  .foot-brand { font-weight:900; font-size:var(--text-lg); }
+  .foot-brand .adobe { color:var(--color-accent); }
+  .foot-legal { font-size:var(--text-sm); color:var(--color-text-tertiary); }
+
+  .animate-in { opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease; }
+  .animate-in.visible { opacity:1; transform:translateY(0); }
+
+  @media (max-width:1024px){
+    .cards { grid-template-columns:1fr; }
+    .pillars { grid-template-columns:1fr; }
+  }
+  @media (max-width:768px){
+    .nav-links { display:none; }
+    .stats-grid { grid-template-columns:repeat(2,1fr); gap:var(--space-400) var(--space-200); }
+    section { padding:var(--space-600) 0; }
+    .hero { padding:var(--space-700) 0 var(--space-600); }
+    .controls { flex-direction:column; align-items:stretch; }
+    .search input { width:100%; }
+    .seg { overflow-x:auto; }
+  }
+  @media (max-width:480px){
+    .stat .num { font-size:var(--text-5xl); }
+    .hero p.lede { font-size:var(--text-lg); }
+  }
+  @media (prefers-reduced-motion:reduce){
+    *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+    html { scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="nav-brand"><span class="adobe">Adobe</span><span class="sep">×</span><span class="cust">PetSmart</span></div>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#responses">RFP responses</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="overline">Prepared for PetSmart · Customer Journey Analytics</p>
+    <h1>PetSmart's Critical Requirements</h1>
+    <p class="lede">Adobe Customer Journey Analytics combines enterprise-grade identity resolution, attribution, governance, and omnichannel analytics on a single data foundation, aligning closely with the critical capabilities PetSmart identified in its evaluation process.</p>
+    <div class="hero-actions">
+      <a href="#responses" class="btn btn-primary">Explore the responses</a>
+    </div>
+  </div>
+</header>
+
+<section class="stats" id="overview">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><div class="num">54</div><div class="lbl">Requirements addressed</div></div>
+      <div class="stat"><div class="num">17</div><div class="lbl">Deal breakers</div></div>
+      <div class="stat"><div class="num">11</div><div class="lbl">Solution areas</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Unified platform</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head animate-in">
+      <div class="sec-kicker">Why CJA for PetSmart</div>
+      <h2>One governed source of truth for the whole customer journey.</h2>
+      <p>The themes that recur across PetSmart's requirements — retroactive logic, no sampling, omnichannel identity, and no per-event licensing — are architectural properties of CJA, not add-ons.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar animate-in">
+        <div class="dot"><span></span></div>
+        <h3>Omnichannel identity</h3>
+        <p>Web, app, POS, loyalty, call center, and returns resolve to one Person via loyalty ID — anonymous-to-known and online-to-store stitching, applied retroactively.</p>
+      </div>
+      <div class="pillar animate-in">
+        <div class="dot"><span></span></div>
+        <h3>Report-time, no sampling</h3>
+        <p>Attribution, segments, and business logic apply at query time across all history with no re-tagging, no sampling, and no cardinality limits on high-SKU data.</p>
+      </div>
+      <div class="pillar animate-in">
+        <div class="dot"><span></span></div>
+        <h3>Volume-based licensing</h3>
+        <p>Priced on annual data rows — not sites, tags, seats, or event names — so PetSmart can instrument broadly without licensing penalizing coverage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="responses" style="background:var(--color-layer-1);border-top:1px solid var(--color-border-subtle);border-bottom:1px solid var(--color-border-subtle);">
+  <div class="wrap">
+    <div class="sec-head animate-in">
+      <div class="sec-kicker">RFP response library</div>
+      <h2>Browse every requirement and response.</h2>
+      <p>Filter by priority and solution area, or search by keyword. Expand any card for the full response and the dependencies to confirm during scoping.</p>
+    </div>
+
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Filter by priority">
+        <button data-prio="all" aria-pressed="true">All</button>
+        <button data-prio="deal-breaker" aria-pressed="false">Deal breakers</button>
+        <button data-prio="high" aria-pressed="false">High importance</button>
+      </div>
+      <div class="search">
+        <input type="search" id="searchBox" placeholder="Search requirements…" aria-label="Search requirements">
+      </div>
+    </div>
+
+    <div class="chips" id="catChips" role="group" aria-label="Filter by solution area"></div>
+    <div class="count-line" id="countLine"></div>
+    <div class="cards" id="cardGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-brand"><span class="adobe">Adobe</span> Customer Journey Analytics</div>
+    <div class="foot-legal">Prepared by Adobe for PetSmart &nbsp;|&nbsp; © 2025 Adobe. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+const CATS = {
+  attribution:"Attribution & Identity",
+  governance:"Data Governance",
+  ownership:"Data Ownership",
+  trust:"Data Trust",
+  implementation:"Implementation & Migration",
+  reporting:"Reporting & Dashboarding",
+  scale:"Scale & Limits",
+  cost:"Cost Model",
+  privacy:"Permissions & Privacy",
+  partnership:"Partnership Fit",
+  integrations:"Integrations"
+};
+
+const DATA = [
+  {id:"1",prio:"deal-breaker",cat:"attribution",title:"User Stitching Logic",
+   req:"Stitch anonymous users with known users across online, in-store, and batch sources — retroactively.",
+   resp:[
+     "CJA resolves anonymous and known identifiers into one unified profile across web, app, in-store, CRM, and batch — core architecture, not a bolt-on.",
+     "Field-based stitching (all tiers) links anonymous activity to a known ID at authentication and looks back to update prior records.",
+     "Graph-based stitching (higher tiers) uses a centralized identity graph for true online-to-store resolution.",
+     "Retroactive replay is built in: historical activity updates automatically as new identity links form — no manual reprocessing."],
+   note:"Graph-based (online-to-store) requires a higher tier. A shared identifier (loyalty ID, email) is needed to connect offline sources; identity is never inferred without one."},
+
+  {id:"12",prio:"deal-breaker",cat:"governance",title:"Certified Metric Definitions",
+   req:"Governed calculated metrics (CVR, revenue, AOV) defined once, reused everywhere, flagged 'approved.'",
+   resp:[
+     "Calculated metrics built once in a visual formula builder and stored as reusable components across every project, dashboard, cohort, and the Reporting API.",
+     "Governance via tagging ('Approved,' 'Finance-Certified'), naming conventions, and Admin Console permissions — no custom development.",
+     "Admins restrict who can create or edit shared metrics; display formatting is standardized per metric.",
+     "Included in all CJA tiers (Select, Prime, Ultimate)."],
+   note:"No native approval workflow or sign-off audit trail — a formal certification chain is an internal process or separate catalog tool. Limit of 5,000 metrics per Data View."},
+
+  {id:"19",prio:"deal-breaker",cat:"ownership",title:"Raw Data Ownership",
+   req:"Raw event-level data ownership; SQL-queryable database; not locked to a vendor UI.",
+   resp:[
+     "Data stored in AEP datasets in open XDM format — no proprietary lock-in.",
+     "AEP Query Service gives direct ANSI-SQL access to raw event-level data, independent of the CJA UI.",
+     "BI Extension / SQL Connector queries CJA data views from Power BI or Tableau; Full Table Export and Data Feeds move processed data to PetSmart-controlled storage.",
+     "AEP Data Mirror auto-syncs datasets to Snowflake, BigQuery, or Databricks."],
+   note:"Some export/BI capabilities vary by SKU (Select/Prime/Ultimate) — confirm entitlements during scoping."},
+
+  {id:"22",prio:"deal-breaker",cat:"trust",title:"Bot & Employee Traffic Exclusion",
+   req:"Bot/employee exclusion via property-level custom rules (User Agent, IP, City, OS, Browser); segment/cohort fallback.",
+   resp:[
+     "Fully native at no additional cost; exclusion defined once at the Data View level and enforced across every report and user.",
+     "Layer 1: Edge Network bot detection (IAB/ABC list) at ingestion. Layer 2: Derived Fields combine signals into one exclusion flag, applied retroactively.",
+     "Layer 3: enforce in the Data View or publish as a shared org-wide segment.",
+     "Optional bot quarantine routes bot traffic out of contracted CJA row capacity at no extra cost."],
+   note:"City-level geo must be captured via geo-IP lookup at schema design (one-time task). Derived Fields limits scale by tier: 100 / 200 / 500. ML-based detection (Data Distiller) is a paid add-on, not required for the base requirement."},
+
+  {id:"23",prio:"deal-breaker",cat:"trust",title:"UI & Warehouse Reconciliation",
+   req:"Data consistency across all surfaces without significant manual effort.",
+   resp:[
+     "One governed source: all calculations, classifications, and attribution applied at query time — no separate reporting vs. export database.",
+     "Full Table Export and Data Feeds carry fully processed CJA output (derived fields, sessionization, segments, time zone) into Snowflake, BigQuery, Azure, S3, or an AEP landing zone.",
+     "Built-in diagnostics catch discrepancies early: duplicate Event ID detection, UTC time-zone standardization, and session/connection diagnostics."],
+   note:"AEP Data Mirror (warehouse → CJA) counts against the Annual Ingestion Limit — scope in the commercial proposal."},
+
+  {id:"26",prio:"deal-breaker",cat:"trust",title:"Data Freshness",
+   req:"Collection-to-UI latency and SLA expectations.",
+   resp:[
+     "Streaming data (Web / Mobile SDK): ~90-minute Service Level Target to queryable in Workspace — all editions.",
+     "Real-Time Reporting (Ultimate only): events available in under 10 minutes, refreshed every minute.",
+     "Batch-ingested data (nightly POS/ERP) appears on the batch schedule, not continuously."],
+   note:"Backfill eligibility for the 90-min SLT scales by tier: Select 24h / Prime 72h / Ultimate 7 days. The 90-min figure is an operating benchmark (SLT), not a contractual guarantee — formal commitments are governed by contract terms."},
+
+  {id:"30",prio:"deal-breaker",cat:"implementation",title:"Data Collection",
+   req:"Collection from App, Web, and Offline sources; streaming and batch formats.",
+   resp:[
+     "Native web, mobile, and offline collection via AEP in a unified XDM model, using both streaming and batch ingestion.",
+     "Web SDK streams page views, clicks, and cart in near real time; Mobile SDK captures 30+ auto-tracked metrics.",
+     "Offline (POS, CRM, call center, loyalty) via batch upload (JSON, Parquet, CSV) or streaming API; pre-built connectors for common systems."],
+   note:"All ingestion runs through AEP — included with CJA. Offline systems without a pre-built connector need a one-time custom batch integration."},
+
+  {id:"31",prio:"deal-breaker",cat:"implementation",title:"Ecommerce Implementation Model",
+   req:"Native ecommerce data model covering impressions → refunds, merchandising attribution, and item-level revenue.",
+   resp:[
+     "XDM Commerce schema natively supports the full retail funnel at SKU/item level; standard Orders, Revenue, Units, and fallout metrics out of the box.",
+     "Merchandising attribution (binding) ties upstream signals — search terms, banners, recommendations — to influenced SKUs and revenue.",
+     "Item-level revenue, units, and margin queryable at SKU, category, or web-ID level; schema extensible for BOPIS, return reason, loyalty tier."],
+   note:"Refund sync via AEP Data Mirror requires a supported warehouse (BigQuery, Databricks, Snowflake); not available on Foundation or CJA on AWS. Counts against ingestion entitlement."},
+
+  {id:"63",prio:"deal-breaker",cat:"reporting",title:"Business-Friendly Naming",
+   req:"Technical event names mapped to business-friendly definitions.",
+   resp:[
+     "Native — no custom development. Data Views rename any field's display name without altering the schema.",
+     "Derived Fields group, rename, classify, and transform raw values at report time; both are non-destructive and apply retroactively.",
+     "Expose labels like 'Store-Assisted Cart Add' or 'Net Product Revenue' while retaining the original technical fields."],
+   note:"Data Views renaming has no added cost at all tiers. Derived Fields field-count limit varies by tier. Business Semantics / CoWorker is a roadmap item — licensing not finalized."},
+
+  {id:"64",prio:"deal-breaker",cat:"reporting",title:"Reusable Segment Model",
+   req:"Segments, audiences, comparisons, cohorts, and filters consistent, saveable, and reusable across surfaces.",
+   resp:[
+     "Centralized Components Library: segments, calculated metrics, date ranges, and annotations created once and reused everywhere.",
+     "No-code Filter Builder for event-, session-, and person-scoped segments; saved segments work across Workspace, Report Builder, BI Extension, and Cohort Tables.",
+     "Segment logic is retroactive and non-destructive; segments can be published as audiences to RT-CDP, AJO, or Target."],
+   note:"Native across all tiers. Audience activation and BI-tool connectivity require separate Adobe/BI licenses; audience-refresh publish limits vary by tier."},
+
+  {id:"65",prio:"deal-breaker",cat:"reporting",title:"Collaborative Analysis",
+   req:"Share, duplicate, and reuse analysis workspaces with editable sharing controls.",
+   resp:[
+     "Native at all tiers. Project sharing with three roles: Edit original, Edit copy, and Read only.",
+     "Save as / Save as template; shared projects carry embedded components so logic travels with the project.",
+     "Workspace commenting (@mention, pinned threads) and 'Share with Anyone' read-only links needing no CJA login."],
+   note:"No real-time simultaneous co-editing (last save wins). Full editing/commenting requires a licensed CJA profile; unlicensed recipients are read-only."},
+
+  {id:"66",prio:"deal-breaker",cat:"reporting",title:"Native Dashboarding",
+   req:"Native dashboarding: calculated metrics, custom layouts, drag-and-drop, annotations, filters (Tableau-like).",
+   resp:[
+     "Analysis Workspace: drag-and-drop canvas, KPI cards, freeform tables, line/bar charts, and flow/journey visualizations — no code or SQL.",
+     "Governed, reusable calculated metrics; interactive date/dimension/metric filters at panel level; annotations overlaid on charts.",
+     "Intelligent Alerts and GenAI Intelligent Captions; 100% unsampled data with no cardinality limits."],
+   note:"Core dashboarding included at all tiers. CoWorker (autonomous AI insights) requires the DX agentic add-on. BI Extension requires BI-tool configuration."},
+
+  {id:"67",prio:"deal-breaker",cat:"reporting",title:"Flexible Item-Level Data Model",
+   req:"Item SKU attachable to any event; avoid separate pulls for product vs. item SKU reporting.",
+   resp:[
+     "Schema-flexible XDM model rather than a fixed event-parameter structure; item attributes (SKU, product ID, category, brand) live in reusable field groups.",
+     "Single-pull reporting: all item identifiers in one unified dataset — SKU-level traffic, conversion, and revenue in a single Workspace panel.",
+     "Binding dimensions tie a search term or placement to a product; no sampling or cardinality limits; retroactive."],
+   note:"Schema and field-group design is a one-time upfront implementation effort. Native — no additional license."},
+
+  {id:"88",prio:"deal-breaker",cat:"scale",title:"App & Web Implementation Consistency",
+   req:"Close implementation-consistency gaps across Web, iOS, Android, and offline surfaces.",
+   resp:[
+     "Adobe's XDM schema and Edge Network apply the same data model across web, iOS, Android, and offline.",
+     "Web SDK, Mobile SDK, and Edge Network Server API all land in the same AEP data lake on the same schema.",
+     "One standardized definition of 'event,' 'product,' 'store,' and 'customer'; bot filtering applied once at the Edge."],
+   note:"PetSmart must define shared XDM field groups and configure identity namespaces (loyalty ID, hashed email, ECID) for cross-surface stitching. Non-standard CRM/POS connectors may add implementation effort."},
+
+  {id:"96",prio:"deal-breaker",cat:"implementation",title:"App SDK Support",
+   req:"Does the App SDK work with Swift 6 and Kotlin (not Java), SwiftUI, and Jetpack Compose — and is it maintained?",
+   resp:[
+     "Yes. AEP Mobile SDK supports native iOS in Swift (including Swift 6 projects) and native Android in Kotlin — Java is not required as the app language.",
+     "Integrates with SwiftUI and Jetpack Compose applications.",
+     "Adobe actively maintains the SDK with ongoing releases, release notes, and migration docs."],
+   note:"Swift 6 apps use Swift 5-mode SDK targets. Kotlin Multiplatform / Compose Multiplatform aren't out-of-the-box variants. Validate against target Xcode/Kotlin/Compose versions in technical discovery."},
+
+  {id:"99",prio:"deal-breaker",cat:"scale",title:"SDK Failure Action",
+   req:"SDK failures should never surface a user-visible error or cause a site outage.",
+   resp:[
+     "Yes. Web SDK requests execute asynchronously and are not intended to block page rendering, checkout, or search.",
+     "A collection failure degrades analytics data rather than causing a site outage or user-visible error.",
+     "Adobe recommends keeping analytics instrumentation separate from checkout, auth, inventory, and payment logic; validation and monitoring tools help verify this."],
+   note:"As with any JavaScript technology, Adobe can't guarantee against issues from custom code, third-party tags, or browser extensions. Validate async patterns and error handling before go-live."},
+
+  {id:"100",prio:"deal-breaker",cat:"ownership",title:"MDPA / DPA",
+   req:"MDPA/DPA naming PetSmart as controller and vendor as processor, with subprocessor disclosure and change-notification rights.",
+   resp:[
+     "Yes, met via Adobe's standard DPA: PetSmart is the controller (or business), Adobe the processor (or service provider).",
+     "Subprocessor transparency, change-notification (typically \u226514 days advance notice), and contractual objection rights are included.",
+     "No separate product, module, or license is required for the controller/processor relationship or subprocessor notifications."],
+   note:"Specific language is governed by the executed DPA. PetSmart-specific modifications require Adobe Legal review."},
+
+  {id:"2",prio:"high",cat:"attribution",title:"Multi-Touch Attribution",
+   req:"Transparent, flexible attribution; channel-sequence visibility; session-scoped channel; available methods.",
+   resp:[
+     "Native across all tiers — no attribution add-on. 9 rules-based models plus Attribution IQ (AI/ML algorithmic) out of the box.",
+     "Attribution applied at query time — switch or compare models instantly and retroactively, with no re-tagging.",
+     "Person-based (not session/device-based), so journeys span channels, devices, and online-to-store; Flow and Fallout show ordered touchpoints."],
+   note:"Custom lookback windows and Summary-Level Data Sources (offline/aggregate media) are native. Audience publishing to RT-CDP/AJO/Target needs those Adobe products."},
+
+  {id:"3",prio:"high",cat:"attribution",title:"Session-Level Reporting",
+   req:"Sessions as a first-class reporting construct with flexible, configurable session-level analysis.",
+   resp:[
+     "Native, reportable construct — no add-on. Session logic set at report time via Data View settings, retroactively, with no re-tagging.",
+     "Configurable inactivity timeout (default 30 min), custom restart conditions, and custom attribution windows.",
+     "Session-scoped metrics combine freely with event- and person-level metrics; sessions analyzed alone or within cross-channel journeys (web, app, POS, loyalty, call center, in-store)."],
+   note:"Extended attribution lookback up to 13 months at the person level. Segments buildable at session, event, or person level."},
+
+  {id:"4",prio:"high",cat:"attribution",title:"Product-Level Merchandising Attribution",
+   req:"Upstream behavior (e.g., search term) bound to SKU, credited with item-level revenue 1:1 (merch eVar concept).",
+   resp:[
+     "Native 1:1 binding of upstream behaviors (search terms, filters, recommendation clicks, placements) to individual SKUs via Binding Dimensions & Metrics.",
+     "Item-level model structures products as arrays for per-SKU attribution rather than event-wide application.",
+     "Full Attribution IQ suite; allocation (Original or Most Recent) configurable per use case; all changes apply retroactively."],
+   note:"Included in core CJA licensing at all tiers. Requires search/filter/merchandising events to reference the relevant SKU array in the data layer."},
+
+  {id:"8",prio:"high",cat:"cost",title:"Total Cost to Operate",
+   req:"Hidden labor: SQL, data engineering, validation, pipelines, third-party tooling, QA; all-in-one vs. multi-vendor; storage/compute location.",
+   resp:[
+     "Natively integrated on AEP — no separate reporting database or third-party warehouse for standard cross-channel analysis; storage and compute are Adobe-hosted.",
+     "One AEP Web SDK replaces a patchwork of collection tools; report-time processing means logic changes apply to all history instantly.",
+     "Native alerting, anomaly detection, and data-quality dashboards reduce manual QA; pre-built source connectors reduce custom ETL."],
+   note:"Query Service included for up to 5 named users (more seats discussed separately). Data Mirror counts against the Annual Ingestion Limit. RT-CDP event forwarding is an additional purchase."},
+
+  {id:"11",prio:"high",cat:"cost",title:"Tool vs Ecosystem",
+   req:"Identify additional SKUs required to fulfill all listed requirements.",
+   resp:[
+     "CJA is licensed in three tiers (Select, Prime, Ultimate) priced on an annual data-row commitment — not hits, events, or seats.",
+     "Core capabilities (omnichannel ingestion, identity stitching, calculated metrics, dashboards, alerting, full-table export) are in the base license; unlimited seats and custom metrics/dimensions at all tiers.",
+     "The same unified data can power RT-CDP and AJO later without re-platforming."],
+   note:"Add-ons: graph-based stitching (Prime/Ultimate), Data Distiller (SQL prep), extended retention beyond 13 months (add-on for Select/Prime, included for Ultimate), and audience activation to ad/email (RT-CDP and/or AJO)."},
+
+  {id:"25",prio:"high",cat:"trust",title:"Data Freshness (QA & Activation)",
+   req:"Data freshness for QA, segmentation, activation, and issue detection; SLA expectations.",
+   resp:[
+     "Streaming data available within a 90-minute Service Level Target — not a contractual SLA with penalties.",
+     "Audience publishing to RT-CDP/AJO/Target refreshes automatically (~every 24 hrs); activation to live channels needs those products.",
+     "Anomaly Detection and Intelligent Alerts (daily/weekly/monthly; no hourly) native at all tiers."],
+   note:"Backfill eligibility for 90-min processing: Select 24h / Prime 72h / Ultimate 7 days. Large backfills (>50M rows) up to 30 days. Data Mirror provides near-real-time warehouse sync; CoWorker root-cause analysis needs the DX agentic add-on."},
+
+  {id:"27",prio:"high",cat:"trust",title:"Collection Error Visibility",
+   req:"Admin governance: schema upload, validation rules (case, allowed values), error surfacing, automated actions.",
+   resp:[
+     "Inherits AEP schema enforcement — records validated against XDM structure, required fields, and data types; non-conforming records rejected or flagged at ingestion.",
+     "Allowed values and casing normalization via schema design, Data Prep mappings, and Derived Fields; DULE governance labels enforce field-level restrictions.",
+     "Intelligent Alerts give threshold/anomaly email notifications for data-quality issues."],
+   note:"Complex conditional rules (multi-field logic, regex, real-time rejection) require custom pipeline logic — not a native UI toggle. Auto-correction of 'bad' data is handled upstream in Data Prep or at the Edge."},
+
+  {id:"33",prio:"high",cat:"implementation",title:"Technical Implementation Complexity",
+   req:"Pre-launch engineering/tagging/QA/documentation; GTM + dataLayer compatibility; standard vs. workaround path.",
+   resp:[
+     "CJA includes the AEP data foundation — no separate AEP license. Multiple standard implementation paths; none require a full site re-tag on day one.",
+     "Existing GTM/dataLayer reusable via a native Google Data Layer extension; existing raw-data exports (e.g., BigQuery-style) can be an immediate source.",
+     "Long-term path is AEP Web SDK — standard and documented but implementation-intensive (schema, identity, QA, training)."],
+   note:"Phased rollout with parallel tracking/validation is the standard approach; a 'big bang' cutover is not recommended. Direct warehouse/Databricks ingestion and Data Mirror are included; usage counts toward ingestion limits."},
+
+  {id:"34",prio:"high",cat:"implementation",title:"Architecture",
+   req:"Multi-source property structure (Web, App, Autoship, In-Store, POS, Returns, CS); loyalty-ID stitching; global vs. working view.",
+   resp:[
+     "CJA unifies all listed sources into a single Connection ('PetSmart – Global') using loyalty ID as the shared Person ID.",
+     "Multiple Data Views layer on top to control scope without duplicating data — no data or identity-stitching capability lost between views.",
+     "Anonymous web/app sessions stitch to loyalty ID on login; Transaction ID joins purchases to returns, including guest checkouts."],
+   note:"Global view = all sources for omnichannel reporting; Working view = Web + App for day-to-day. Subscription ID links first autoship orders to recurring feeds as a configurable join key."},
+
+  {id:"42",prio:"high",cat:"implementation",title:"Traditional Web Analytics Metrics",
+   req:"Industry-standard metrics (bounce, session, user, time on page/site, DAU, MAU) without custom setup.",
+   resp:[
+     "Sessions, People, Time on Page, and Time on Site are native, out-of-the-box; DAU/MAU via Guided Analysis ('User Growth: Active') panels.",
+     "Bounce Rate is a ~5-minute no-code setup: a Filter (Session Hits = 1) + a Calculated Metric (Bounces \u00f7 Sessions), then behaves like any native metric.",
+     "All metrics break down by any dimension with no sampling and no cardinality limits."],
+   note:"No additional license, product, or cost — included in all tiers."},
+
+  {id:"44",prio:"high",cat:"integrations",title:"External Integrations",
+   req:"Event-level integrations/data sharing with Optimizely, Databricks, Hightouch, Contentsquare, Medallia, JIRA, ClickUp, and cloud storage.",
+   resp:[
+     "Data warehouses (Databricks, Snowflake, BigQuery): native via AEP Data Mirror — continuous, bi-directional sync (inserts, updates, deletes).",
+     "Cloud storage (S3, Azure Blob, GCS, SFTP): native Full Table & Dataset Export — uni-directional, event-level, field/segment-filtered.",
+     "Event forwarding/webhooks via RT-CDP (additional license). Optimizely, Contentsquare, Medallia, JIRA, ClickUp: no native connectors — via AEP source connectors, API, or reverse-ETL (e.g., Hightouch)."],
+   note:"AEP Data Mirror and cloud-storage export are included with CJA. RT-CDP Event Forwarding is a separate purchase. Point-solution integrations may need custom mapping or an iPaaS/reverse-ETL tool."},
+
+  {id:"48",prio:"high",cat:"partnership",title:"Vendor Expertise",
+   req:"Technical depth of vendor team; internal vs. outside counsel for complex questions.",
+   resp:[
+     "Dedicated Customer Success Managers, Solution Consultants, and Professional Services — PetSmart need not go outside Adobe for expert guidance.",
+     "Coverage spans platform strategy, architecture, identity, attribution, journey design, and governance.",
+     "Three support tiers: self-directed, guided, and full-service; plus a large certified partner ecosystem for large-scale migrations."],
+   note:"Customer Success and Solution Consulting are included in the standard relationship. Formal implementation/migration services (Adobe PS or partner SOW) are separately scoped."},
+
+  {id:"52",prio:"high",cat:"partnership",title:"CRO & Non-Ads Analytics Roadmap Clarity",
+   req:"Credible roadmap beyond media: experimentation, funnel diagnostics, journey analysis, merch analytics, governance, release QA.",
+   resp:[
+     "Experimentation: native test/control segment analysis (execution via Target or AJO), analyzed in CJA alongside journey data.",
+     "Funnel diagnostics (native Fallout), journey analysis (Flow, Journey Canvas, Cohort Table), and merchandising analytics in the same report.",
+     "Governance & Admin (Data Views, Data Dictionary, permissions) and native threshold Alerts/Annotations for release flagging."],
+   note:"Core funnel, journey, merchandising, governance, and alerting included at all tiers. Advanced Guided Analysis (Product Analytics) panels require Prime or Ultimate."},
+
+  {id:"56",prio:"high",cat:"privacy",title:"Role-Based Access Control",
+   req:"Permissions by role, team, workspace, property, dataset, report, and feature area.",
+   resp:[
+     "Fully native via Adobe Admin Console. Product Profiles define role access (Viewer, Author, Admin); User Groups scope to teams.",
+     "Connections/Data Views act as the 'property'; dataset permissions govern exposed data; reports shareable with Edit/Duplicate/View-only.",
+     "Feature-area control over Workspace, Report Builder, and Reporting API; PII/sensitive fields blockable from exports, emails, and API."],
+   note:"All RBAC capabilities are native and included at no additional cost."},
+
+  {id:"60",prio:"high",cat:"privacy",title:"SSO Provisioning",
+   req:"Okta SSO support for CJA access.",
+   resp:[
+     "Adobe Admin Console supports SAML 2.0 federated SSO with any standards-based IdP, including Okta.",
+     "Users authenticate with existing corporate credentials; automated directory sync handles provisioning/deprovisioning via Okta/Active Directory.",
+     "Users auto-placed into the correct Product Profiles/User Groups; ties into CJA RBAC."],
+   note:"Native Admin Console capability — no additional Adobe cost. Requires coordinated setup on both Admin Console and PetSmart's Okta tenant (short IT project)."},
+
+  {id:"68",prio:"high",cat:"reporting",title:"Scope Flexibility",
+   req:"Cross-scope reporting: user + session + event + item + merch in one report; scope-mixing; total row deduplication.",
+   resp:[
+     "Native. The container model (Person, Session, Event, Item) lets those dimensions and metrics combine freely in a single report.",
+     "A multi-item transaction can be broken down by item name while still showing correct transaction-level metrics; total rows de-duplicate accurately.",
+     "Extends beyond commerce: loyalty tier, channel/campaign, search term, and SKU in one analysis."],
+   note:"Requires commerce/item-level data (e.g., productListItems) as part of standard implementation — not incremental cost. De-duplication behavior confirmed during scoping."},
+
+  {id:"69",prio:"high",cat:"reporting",title:"Report Automation",
+   req:"Automated recurring reports/dashboards; native scheduling; public links vs. login required.",
+   resp:[
+     "Scheduled Projects deliver any Workspace project as PDF or CSV on a recurring email schedule — no third-party tools.",
+     "Mobile scorecards via the CJA/Adobe Analytics app; Project Curation limits which components a recipient sees.",
+     "'Share with Anyone' read-only and panel links allow access without a CJA license."],
+   note:"All scheduling/sharing native at every tier. Full editing needs a CJA seat; view-only shared links do not."},
+
+  {id:"70",prio:"high",cat:"reporting",title:"Report Publishing",
+   req:"Org-level dashboard sharing; version control; draft/publish workflow; copy vs. live-link behavior.",
+   resp:[
+     "Org-wide reporting governed via centralized Data Views, Project Curation, and sharing permissions; shared projects are live-linked by default.",
+     "Recipients get an independent copy only if they Duplicate; Scheduled PDF/CSV exports are point-in-time snapshots.",
+     "Data Views duplicated/iterated non-destructively; changes retroactive without altering raw data."],
+   note:"No formal draft/publish workflow — governance via permissions, curation, and team process. PetSmart should establish an internal process to designate official org-wide reports."},
+
+  {id:"71",prio:"high",cat:"reporting",title:"Sequential Session Logic",
+   req:"Sequential behavior analysis within a session (did X then Y, using user + event properties).",
+   resp:[
+     "Native sequential 'Then' segmentation out of the box; enforce Event X \u2192 Event Y within the same session using the Session container.",
+     "Supports exclusion steps (X, then NOT Z, then Y) and time constraints between steps.",
+     "Event, Session, and Person containers mix freely; combine with person-, event-, and session-level conditions."],
+   note:"Native at every tier — no additional product or cost."},
+
+  {id:"73",prio:"high",cat:"reporting",title:"Business Events",
+   req:"Ingest external day-level event calendar (spreadsheet); attach to calendar in reports; roll up for clean comparison.",
+   resp:[
+     "Native Annotations record day-level business events (promos, launches, holidays, incidents) and overlay them as markers on any trend.",
+     "Annotations are calendar-tied, not report-tied — entered once, they appear across all projects and Data Views.",
+     "For large recurring calendars, upload as a Lookup Dataset joined by date — scalable and reusable org-wide."],
+   note:"Annotations included at all tiers. Lookup Dataset is a standard native configuration, typically set up once at implementation."},
+
+  {id:"74",prio:"high",cat:"reporting",title:"SKU & Web ID Filtering",
+   req:"Filter reports by pasted/uploaded lists of SKUs or high-cardinality IDs; regex; CSV upload within a report.",
+   resp:[
+     "Native paste/upload of SKU, Web ID, or high-cardinality lists directly into a report filter; regex filtering supported.",
+     "No dimension cardinality limits — full product catalog tracked without 'other' bucketing; underlying data is full-granularity, not sampled.",
+     "Reusable large lists managed via a Filter (segment) or Lookup Dataset."],
+   note:"Full Table Export supports up to 30M / 150M / 300M rows per export (Select / Prime / Ultimate)."},
+
+  {id:"84",prio:"high",cat:"scale",title:"Hiring Burden",
+   req:"Market prevalence of the toolset; known adoption among large retailers.",
+   resp:[
+     "Adobe Analytics and CJA are widely deployed among large enterprises and major retailers; the Analysis Workspace skill set is shared with AA — a broad, mature talent pool.",
+     "Public CJA certification, self-paced Experience League training, and an active practitioner community.",
+     "Large partner ecosystem of Adobe-focused consultancies for implementation, migration, and managed services."],
+   note:"Market/ecosystem characteristic — no associated Adobe product cost. Partner staffing/managed services separately scoped."},
+
+  {id:"85",prio:"high",cat:"scale",title:"Query Performance",
+   req:"Large date range + granular segment queries without timeouts or sampling.",
+   resp:[
+     "CJA never samples data, regardless of date range or segment complexity; built on AEP's cloud-scale data lake.",
+     "Extremely complex multi-panel reports may hit built-in complexity guardrails — transparent and documented.",
+     "Best practices (splitting projects, staging analysis) resolve guardrail limits."],
+   note:"No additional product or licensing cost — performance at scale is a built-in platform characteristic."},
+
+  {id:"86",prio:"high",cat:"scale",title:"High-Cardinality & Dimension Limit Stress Test",
+   req:"High-cardinality dimension handling (SKU, Product ID, Search Term, URL, User ID, Campaign ID): hiding, 'other' bucketing, sampling.",
+   resp:[
+     "No defined cardinality limits on any dimension; full granularity retained for SKU, Product ID, Search Term, Page URL, User/Customer ID, Content ID, and Campaign ID.",
+     "No values hidden, truncated, or bucketed into 'other'; no report-time sampling.",
+     "A core architectural advantage for a high-SKU retailer."],
+   note:"Included at all tiers. Full Table Export row limits scale by tier: 30M / 150M / 300M. Very large result sets benefit from filtering and top-N breakdowns."},
+
+  {id:"89",prio:"high",cat:"scale",title:"App Debugging",
+   req:"Native mobile/app debug tooling without device tethering, proxy debugger, or dual-device/laptop setup.",
+   resp:[
+     "AEP Assurance is a first-party native debugging tool included with the Mobile SDK — no additional cost.",
+     "Connects via QR scan or PIN handshake on-device — no cables, Charles Proxy, or console logs; streams live SDK events for inspection anywhere.",
+     "Supports simulated events and in-context screenshots; the PIN handshake prevents unauthorized sessions."],
+   note:"Included as a native Mobile SDK capability. Requires the Assurance extension in the app's SDK build (standard practice)."},
+
+  {id:"90",prio:"high",cat:"scale",title:"Data Retention Limits",
+   req:"Data retention coverage: user-, event-, item-level, and aggregated.",
+   resp:[
+     "Full-grain event-level data (user, session, event, item) — no separate aggregate-only tier. 13 months rolling, fully reportable, at every tier.",
+     "Ultimate includes an additional 12 months natively (~25 months out of the box).",
+     "GDPR/CCPA deletion requests processed against both the data lake and CJA reportable data — typically within ~7 days."],
+   note:"Extended retention beyond 13 months is an add-on for Select/Prime and included for Ultimate. Data-lake retention is configured separately per the AEP contract."},
+
+  {id:"95",prio:"high",cat:"implementation",title:"Currency",
+   req:"Multi-currency handling across properties/data views; Canada vs. US revenue in a shared property.",
+   resp:[
+     "Native multi-currency reporting via a Data View-level currency conversion setting; transactions retain their original local currency code — no detail lost.",
+     "Maintain 'Revenue (Local Currency)' and 'Revenue (USD)' side by side in the same Data View.",
+     "Currency-specific Data Views per region or business unit; conversion centrally managed and applied retroactively."],
+   note:"Native point-and-click configuration — no additional product purchase; included at every tier."},
+
+  {id:"103",prio:"high",cat:"cost",title:"Contract Documentation",
+   req:"Can Adobe provide the security, privacy, compliance, operational, and service documentation for procurement and risk review?",
+   resp:[
+     "Yes — applicable security, privacy, compliance, governance, and service documentation through Adobe's enterprise contracting, trust, and compliance processes.",
+     "CJA and AEP include data governance, usage monitoring, access controls, auditability, and operational visibility."],
+   note:"Specific commitments (SOC reports, ISO certifications, breach notification, entitlement reporting, logging, outage handling, API governance, service ownership) should be documented in the agreement, security package, and contractual exhibits."},
+
+  {id:"104",prio:"high",cat:"cost",title:"Planned Maintenance Notifications",
+   req:"Will Adobe provide advance notice of planned maintenance and support around peak retail periods?",
+   resp:[
+     "Adobe maintains established service-management and communications processes for planned maintenance and service events.",
+     "Notification procedures, blackout periods, emergency-maintenance exceptions, recipients, escalation paths, and remedies should be documented in the service terms and SLA."],
+   note:"Specific notice periods and retail blackout protections should be addressed as contractual commitments, not assumed product functionality. Adobe's operating model can align with PetSmart's release/incident-management processes."},
+
+  {id:"105",prio:"high",cat:"cost",title:"API & SDK Change Management",
+   req:"How does Adobe manage API/SDK versioning, deprecation, and breaking-change communications?",
+   resp:[
+     "Adobe publishes release information, technical documentation, migration guidance, and support info for applicable APIs and SDKs.",
+     "Structured lifecycle management for Web SDK, Mobile SDK, Edge Network integrations, APIs, and supporting services."],
+   note:"Version-support windows, deprecation policies, notice periods, and exceptions for security/regulatory needs should be confirmed via product documentation and contractual agreements."},
+
+  {id:"108",prio:"high",cat:"privacy",title:"CCPA, PIPEDA & Qu\u00e9bec Law 25",
+   req:"Does the platform support privacy and consent management for CCPA, PIPEDA, Qu\u00e9bec Law 25, and similar regulations?",
+   resp:[
+     "Yes — technical controls for consent-aware collection, privacy governance, sensitive-data labeling, usage policies, and privacy-request workflows across AEP and CJA.",
+     "Web/Mobile SDK implementations integrate with existing consent-management processes so collection, reporting, exports, and activation align with consent decisions."],
+   note:"Governance policies apply consistently across web, mobile, loyalty, commerce, and CS datasets. Compliance responsibility remains shared across technology, legal, operational, and policy processes."},
+
+  {id:"110",prio:"high",cat:"privacy",title:"TLS & ISO Certification",
+   req:"Does Adobe support secure transmission, encryption, and internationally recognized security certifications?",
+   resp:[
+     "Yes — AEP and associated collection, processing, and reporting services use encrypted communications and support enterprise security programs.",
+     "Security commitments should be mapped to the specific Adobe services in PetSmart's subscription."],
+   note:"Specific TLS versions, encryption-at-rest standards, certification scope, service-region coverage, data residency, and audit documentation should be validated via Adobe's current security package and contractual documentation."},
+
+  {id:"113",prio:"high",cat:"privacy",title:"Disclosure of Subprocessors",
+   req:"Will Adobe disclose subprocessors involved in delivering the solution?",
+   resp:[
+     "Yes — Adobe maintains privacy, data-processing, and subprocessor documentation for applicable cloud services.",
+     "PetSmart can review current subprocessor disclosures and map them to AEP, CJA, collection, storage, support, security, and regional services."],
+   note:"Notification rights, data-transfer mechanisms, residency, and processing responsibilities should be reviewed within Adobe's privacy documentation and DPA."},
+
+  {id:"114",prio:"high",cat:"cost",title:"Collection Endpoint Availability",
+   req:"What availability commitments exist for collection endpoints and event ingestion?",
+   resp:[
+     "Adobe provides availability commitments through applicable service agreements and service-level terms.",
+     "Collection availability should be considered independently from reporting availability — collection and visibility may occur through different service layers."],
+   note:"Collection availability, incident response, recovery procedures, maintenance exclusions, and service-credit eligibility should be documented explicitly in the SLA."},
+
+  {id:"115",prio:"high",cat:"cost",title:"Reporting & UI Availability",
+   req:"What availability commitments exist for reporting, dashboards, APIs, and the CJA UI?",
+   resp:[
+     "Adobe supports reporting and analytical experiences through CJA and Analysis Workspace.",
+     "Reporting availability should be measured separately from collection and ingestion availability, giving clearer operational visibility."],
+   note:"Availability commitments, scheduled delivery, reporting APIs, admin capabilities, exports, regional coverage, maintenance handling, and service-credit eligibility should be documented in the SLA and service terms."},
+
+  {id:"116",prio:"high",cat:"cost",title:"PetSmart Ownership of Raw Event Data",
+   req:"Does PetSmart retain ownership of its customer and event-level data?",
+   resp:[
+     "Yes — PetSmart should require contractual language confirming ownership of Customer Data, including raw event data supplied to Adobe.",
+     "The agreement should define Adobe's permitted processing rights, data access, export rights, retention, deletion, transition assistance, and termination support."],
+   note:"Ownership and portability should be documented through the executed agreement rather than product documentation alone. CJA supports export, warehouse integration, and exit provisions that reduce lock-in."},
+
+  {id:"117",prio:"high",cat:"cost",title:"Pricing Must Not Discourage Instrumentation",
+   req:"Does the commercial model allow broad instrumentation without separate licensing for every event or business process?",
+   resp:[
+     "Yes — the CJA model is built around data volume, retention, capacity, and related entitlements rather than the number of sites, properties, apps, tags, or event names.",
+     "PetSmart can instrument meaningful interactions across ecommerce, mobile, loyalty, merchandising, autoship, CS, and store while keeping one analytics framework."],
+   note:"Final licensing metrics, guardrails, retention treatment, overage policies, and capacity entitlements should be confirmed in the final order form and commercial agreement."}
+];
+
+const grid = document.getElementById('cardGrid');
+const countLine = document.getElementById('countLine');
+const chipWrap = document.getElementById('catChips');
+let state = { prio:'all', cat:'all', q:'' };
+
+// Build category chips (only cats present in data)
+const presentCats = [...new Set(DATA.map(d=>d.cat))];
+const chipDefs = [['all','All areas'], ...presentCats.map(c=>[c,CATS[c]])];
+chipDefs.forEach(([key,label],i)=>{
+  const b=document.createElement('button');
+  b.className='chip'; b.textContent=label; b.dataset.cat=key;
+  b.setAttribute('aria-pressed', key==='all'?'true':'false');
+  b.addEventListener('click',()=>{ state.cat=key; syncChips(); render(); });
+  chipWrap.appendChild(b);
+});
+function syncChips(){
+  chipWrap.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed', c.dataset.cat===state.cat?'true':'false'));
+}
+
+// Priority segmented control
+document.querySelectorAll('.seg button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    state.prio=b.dataset.prio;
+    document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed', x===b?'true':'false'));
+    render();
+  });
+});
+
+document.getElementById('searchBox').addEventListener('input',e=>{ state.q=e.target.value.toLowerCase().trim(); render(); });
+
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const CHEV = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+
+function matches(d){
+  if(state.prio!=='all' && d.prio!==state.prio) return false;
+  if(state.cat!=='all' && d.cat!==state.cat) return false;
+  if(state.q){
+    const hay=(d.title+' '+d.req+' '+d.resp.join(' ')+' '+(d.note||'')+' '+CATS[d.cat]+' id '+d.id).toLowerCase();
+    if(!hay.includes(state.q)) return false;
+  }
+  return true;
+}
+
+function cardHTML(d){
+  const pTag = d.prio==='deal-breaker'
+    ? '<span class="tag tag-db">Deal breaker</span>'
+    : '<span class="tag tag-hi">High importance</span>';
+  const resp = d.resp.map(r=>`<li>${esc(r)}</li>`).join('');
+  const noteHTML = d.note ? `<div class="note"><strong>Dependencies &amp; considerations:</strong> ${esc(d.note)}</div>` : '';
+  return `<details class="card">
+    <summary class="card-head">
+      <div class="card-tags">${pTag}<span class="tag tag-cat">${esc(CATS[d.cat])}</span><span class="tag-id">ID ${esc(d.id)}</span></div>
+      <div class="card-title"><h3>${esc(d.title)}</h3>${CHEV}</div>
+      <p class="card-req">${esc(d.req)}</p>
+    </summary>
+    <div class="card-body">
+      <div class="body-label">Adobe response</div>
+      <ul>${resp}</ul>
+      ${noteHTML}
+    </div>
+  </details>`;
+}
+
+function render(){
+  const list = DATA.filter(matches);
+  // sort: deal breakers first, then by numeric id
+  list.sort((a,b)=>{
+    if(a.prio!==b.prio) return a.prio==='deal-breaker'?-1:1;
+    return (+a.id)-(+b.id);
+  });
+  grid.innerHTML = list.length
+    ? list.map(cardHTML).join('')
+    : '<div class="empty">No requirements match those filters. Try clearing the search or choosing “All.”</div>';
+  const db = list.filter(d=>d.prio==='deal-breaker').length;
+  const hi = list.length-db;
+  countLine.textContent = `Showing ${list.length} requirement${list.length===1?'':'s'}` + (list.length? ` — ${db} deal breaker${db===1?'':'s'}, ${hi} high importance` : '');
+}
+render();
+
+// scroll-triggered entrance
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+},{threshold:0.1});
+document.querySelectorAll('.animate-in').forEach(el=>io.observe(el));
+
+// nav scroll-spy
+const navLinks = document.querySelectorAll('.nav-links a');
+const secs = ['overview','responses'].map(id=>document.getElementById(id));
+const spy = new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id));
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>{ if(s) spy.observe(s); });
+</script>
+</body>
+</html>
